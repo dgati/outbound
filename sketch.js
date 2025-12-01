@@ -38,5 +38,14 @@ function draw() {
    
   // filter(THRESHOLD, 0.7);
   // filter(POSTERIZE, 2.5);
+
+  // You can save a screenshot if you like, using the following code,
+  // which allows you to just press 's' to save:
+
+  function keyPressed() {
+  if (key === 's') {
+    saveFrames('screenshot', 'png', 1, 1);
+  }
+}
   
 }
