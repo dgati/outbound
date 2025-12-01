@@ -1,5 +1,8 @@
-# outbound
-outbound activity resources
+# outbound activity resources
+
+***
+to find this page search 'https://github.com/dgati/outbound/'
+***
 
 copy the code in the sketch.js file (all of it)
 
