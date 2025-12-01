@@ -1,0 +1,2 @@
+# outbound
+outbound activity resources
