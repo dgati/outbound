@@ -1,51 +1,94 @@
-// Set the video capture as a global variable.
-let capture;
+// Position variables
+let circlePositionX = 200;
+let circlePositionY = 200;
+
+// Speed variables
+let circleSpeedX = 2;
+let circleSpeedY = 3;
+
+// Radius variable
+let circleRadius = 25;
+
+// Hue variable
+let circleHue = 0;
 
 function setup() {
-  describe('Video capture from the device webcam.');
-  createCanvas(360, 400);
+  // Create 400x400 canvas
+  createCanvas(400, 400);
 
-  // Use the createCapture() function to access the device's
-  // camera and start capturing video.
-  capture = createCapture(VIDEO);
+  // Cover canvas with white
+  background(255);
 
-  // Make the capture frame half of the canvas.
-  capture.size(360, 200);
+  // Draw ellipses using their radius
+  ellipseMode(RADIUS);
 
-  // Use capture.hide() to remove the p5.Element object made
-  // using createCapture(). The video will instead be rendered as
-  // an image in draw().
-  capture.hide();
+  // Draw rectangles on either side of the canvas
+  noStroke();
+  fill(128);
+  rect(0, 0, 100, height);
+  rect(300, 0, 100, height);
+
+  // Use Hue Saturation Brightness for colors on circle trail
+  colorMode(HSB);
+
+  // Set stroke weight to 4 units
+  strokeWeight(4);
+
+  // Create screen reader accessible description
+  describe(
+    'A circle starts in the center of the canvas. When the user holds the mouse down, the circle bounces around the canvas, its inside switches between black and white, and its outline fades between colors, leaving a rainbow trail.'
+  );
 }
 
 function draw() {
-  // Set the background to gray.
-  background(51);
+  // Set stroke color using current hue
+  stroke(circleHue, 80, 90);
 
-  // Draw the resulting video capture on the canvas
-  // with the invert filter applied.
-  image(capture, 0, 0, 360, 400);
+  // If circle's x position is between 100 and 300
+  if (circlePositionX >= 100 && circlePositionX <= 300) {
+    // Set fill color to black
+    fill(0);
 
-  // Experiment with applying filters  to the video!
-  filter(INVERT);
-
-  // here are some filter options to play with: 
-  // INVERT - what does this do?
-  // THRESHOLD - Pixels with a grayscale value above a given threshold are converted to white. 
-  // The rest are converted to black. The threshold must be between 0.0 (black) and 1.0 (white).
-  // POSTERIZE -Limits the number of colors in the image. Each color channel is limited to the number of colors specified. 
-  // Values between 2 and 255 are valid, but results are most noticeable with lower values. The default value is 4.
-   
-  // filter(THRESHOLD, 0.7);
-  // filter(POSTERIZE, 2.5);
-
-  // You can save a screenshot if you like, using the following code,
-  // which allows you to just press 's' to save:
-
-  function keyPressed() {
-  if (key === 's') {
-    saveFrames('screenshot', 'png', 1, 1);
+    // Otherwise
+  } else {
+    // Set fill color to white
+    fill(255);
   }
-}
-  
+
+  // Draw circle at current position
+  circle(circlePositionX, circlePositionY, circleRadius);
+
+  // If mouse is held down, animate the sketch
+  if (mouseIsPressed === true) {
+    // Add speed to circle's position to make it move
+    circlePositionX = circlePositionX + circleSpeedX;
+    circlePositionY = circlePositionY + circleSpeedY;
+
+    // Increase hue by 1
+    circleHue = circleHue + 1;
+  }
+
+  // If hue has reached maximum value
+  if (circleHue >= 360) {
+    // Reset hue to 0
+    circleHue = 0;
+  }
+
+  // If circle is beyond left or right edge
+  if (
+    circlePositionX < circleRadius ||
+    circlePositionX > width - circleRadius
+  ) {
+    // Reverse horizontal speed
+    circleSpeedX = -circleSpeedX;
+  }
+
+  // If circle is beyond top or bottom edge
+  if (
+    circlePositionY < circleRadius ||
+    circlePositionY > height - circleRadius
+  ) {
+    // Reverse vertical speed
+    circleSpeedY = -circleSpeedY;
+  }
 }
