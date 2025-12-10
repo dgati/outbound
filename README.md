@@ -12,5 +12,5 @@ paste the code in there; you'll be able to run it from there
 
 
 
-<a href="#" onclick='window.open("http://www.foracure.org.au");return false;'></a>
+<a href="#" onclick='window.open("http://www.foracure.org.au");return false;'>test</a>
 
