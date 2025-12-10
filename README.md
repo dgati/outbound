@@ -13,5 +13,8 @@ paste the code in there; you'll be able to run it from there
 
 
 
-<a href="https://editor.p5js.org" onclick='window.open("https://editor.p5js.org");return false;'>test</a>
+
+
+<a onclick="window.open(this.href,'_blank');return false;" href="http://www.foracure.org.au">Some Other Site</a>
+
 
