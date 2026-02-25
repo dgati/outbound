@@ -12,7 +12,7 @@ in a new window or tab, go to
 paste the code in there; you'll be able to run it from there
 
 
-once you've got the code in the p5 web editor, run it Ii-ll explain it) + and then play around with some of the settings.
+once you've got the code in the p5 web editor, run it and I'll explain it) + and then play around with some of the settings.
 
 
 
