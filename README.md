@@ -1,7 +1,7 @@
 # outbound activity resources
 
 ***
-to find this page search 'github.com/dgati/outbound/'
+to find this page search <a href=https://github.com/dgati/outbound>github.com/dgati/outbound/'</a>
 ***
 
 copy the code in the sketch.js file (all of it)
